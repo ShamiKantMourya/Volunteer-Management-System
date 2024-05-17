@@ -2,14 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-const API_URL = "";
+const API_URL = "https://volunteer-management-apis.onrender.com";
 
 export const fetchVolunteers = createAsyncThunk(
   "/volunteers/fetchVolunteers",
   async () => {
-    const response = await axios.get(
-      "https://volunteer-management-application.anushkajaiswal7.repl.co/volunteer"
-    );
+    const response = await axios.get(`${API_URL}/api/v1/volunteer`);
     return response?.data?.data;
   }
 );
@@ -17,10 +15,7 @@ export const fetchVolunteers = createAsyncThunk(
 export const addVolunteer = createAsyncThunk(
   "/volunteers/addVolunteer",
   async (bodyData) => {
-    const response = await axios.post(
-      "https://volunteer-management-application.anushkajaiswal7.repl.co/volunteer",
-      bodyData
-    );
+    const response = await axios.post(`${API_URL}/api/v1/volunteer`, bodyData);
     toast.success(response.data.message);
     return response.data.data;
   }
@@ -29,9 +24,7 @@ export const addVolunteer = createAsyncThunk(
 export const deleteVolunteer = createAsyncThunk(
   "/volunteers/deleteVolunteer",
   async (id) => {
-    const response = await axios.delete(
-      `https://volunteer-management-application.anushkajaiswal7.repl.co/volunteer/${id}`
-    );
+    const response = await axios.delete(`${API_URL}/api/v1/volunteer/${id}`);
     toast.success(response.data.message);
     return response.data.data;
   }
@@ -41,7 +34,7 @@ export const updateVolunteer = createAsyncThunk(
   "/volunteers/updateVolunteer",
   async ({ id, volunteerData }) => {
     const response = await axios.put(
-      `https://volunteer-management-application.anushkajaiswal7.repl.co/volunteer/${id}`,
+      `${API_URL}/api/v1/volunteer/${id}`,
       volunteerData
     );
     toast.success(response.data.message);
