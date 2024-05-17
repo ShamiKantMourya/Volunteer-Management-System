@@ -17,7 +17,7 @@ export default function Header() {
           <GitHubIcon />
         </NavLink>
         <NavLink
-          to="https://replit.com/@shamiMourya/Volunteer-Management-APIs#index.js"
+          to="https://replit.com/@shamiMourya/Volunteer-Management-APIs-1"
           target="_blank"
         >
           <StorageIcon />
